@@ -1,9 +1,14 @@
 class Polynomial():
+	_var = 'x'
+
+	@classmethod
+	def set_variables(cls, y):
+		cls._var = y
 
 	def __init__(self, *c):
 		self._c = c
 		if self._c[-1] == 0: self._truncate()
-		self.var = 'x'
+		self.var = self._var
 
 	def _truncate(self):
 		c = list(self._c)
@@ -12,7 +17,7 @@ class Polynomial():
 			c.pop()
 		self._c = tuple(c)
 
-	def variable(y):
+	def variable(self, y):
 		self.var = y
 
 	def degree(self):
@@ -93,7 +98,7 @@ class Polynomial():
 		return 	y
 
 	def derivative(self):
-		c = self._c[1:]
+		c = list(self._c[1:])
 		for i in range(len(c)):
 			c[i] = c[i] * (i+1)
 		return Polynomial(*tuple(c))
@@ -118,7 +123,12 @@ class Polynomial():
 					else: s = s + str(self._c[i])[1:] + self.var
 
 				if not i == 1: s = s + '^' + str(i)
-		return s
+
+		if self._c[0] == 0 and self.degree() > 0:
+			j = s.index(' ')
+			return s[j+3:]
+
+		else: return s
 
 	def __repr__(self):
 		return 'Polynomial' + str(self._c)
