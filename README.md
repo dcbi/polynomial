@@ -75,10 +75,8 @@ print( linear.integral() )
 #  0.5z^2
 ```
 
-Since Polynomials are also functions, the `.integral()` method lets you calculate the definite integral:
+You can specify the constant of integration by passing it as an argument. By default it is zero. Since Polynomials are also functions, the `.integral()` method lets you easily calculate the definite integral:
 ```python
 linear.integral()(1) - linear.integral()(0)
 #  0.5
 ```
-
-You can specify the constant of integration by passing it as an argument. By default it is zero.
