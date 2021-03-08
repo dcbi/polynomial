@@ -1,5 +1,5 @@
 # polynomial
-A Python class representing polynomials.
+Python classes for representing polynomial functions and rational numbers.
 
 ## Example Usage
 ### Polynomials
