@@ -2,6 +2,7 @@
 A Python class representing polynomials.
 
 ## Example Usage
+### Polynomials
 Create a Polynomial object by passing its coefficients:
 ```python
 from polynomial import Polynomial
@@ -18,7 +19,7 @@ print(quadratic)
 #  1 - z^2
 ```
 
-Polynomial objects can be added, subtracted, and multiplied by each other or by numbers. They also be raised to integer powers. For example:
+Polynomial objects can be added, subtracted, and multiplied by each other or by numbers. They can also be raised to integer powers. For example:
 ```python
 cubic = Polynomial(1,0,0,1)
 
@@ -80,3 +81,18 @@ You can specify the constant of integration by passing it as an argument. By def
 linear.integral()(1) - linear.integral()(0)
 #  0.5
 ```
+### Rationals
+Create a Rational by passing its numerator and denominator:
+```python
+half = Rational(1,2)
+```
+
+Rationals automatically simplify to their reduced form upon creation. Negative signs are also placed in the numerator.
+```python
+Rational(9,-27)
+#  (-1 / 3)
+```
+
+You can do most algebraic operations between Rationals, or between Rationals and integers (the result of which will be a Rational type). The exception is raising a Rational to a non-integer power, which will return a float. Algebraic operations between Rationals and floats will always return a float.
+
+Rationals can also be used alongside Polynomials. They can be added, subtracted, and multiplied together. The result is always a Polynomial. You can only divide Polynomials by Rationals (not the other way around) and Polynomials cannot be raised to a power of Rational.
