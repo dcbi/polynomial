@@ -1,4 +1,4 @@
-# polynomial
+# poly-ratio
 Python classes for representing polynomial functions and rational numbers.
 
 ## Example Usage
