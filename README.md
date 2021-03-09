@@ -84,6 +84,7 @@ linear.integral()(1) - linear.integral()(0)
 ### Rationals
 Create a Rational by passing its numerator and denominator:
 ```python
+from rational import Rational
 half = Rational(1,2)
 ```
 
