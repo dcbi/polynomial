@@ -6,8 +6,8 @@ class Rational():
 
     def __reduce__(self, a, b):
         d = gcd(a,b)
-        up = int(a//d)
-        down = int(b//d)
+        up = a // d
+        down = b // d
         if b < 0: return -up, -down
         else: return up, down
 
