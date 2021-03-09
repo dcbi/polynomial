@@ -5,7 +5,7 @@ Python classes for representing polynomial functions and rational numbers.
 ### Polynomials
 Create a Polynomial object by passing its coefficients:
 ```python
-from polynomial import Polynomial
+from polyratio import Polynomial
 
 quadratic = Polynomial(1,0,-1)
 print(quadratic)
@@ -84,7 +84,7 @@ linear.integral()(1) - linear.integral()(0)
 ### Rationals
 Create a Rational by passing its numerator and denominator:
 ```python
-from rational import Rational
+from polyratio import Rational
 half = Rational(1,2)
 ```
 

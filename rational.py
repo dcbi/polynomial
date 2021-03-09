@@ -1,3 +1,5 @@
+from math import gcd
+
 class Rational():
 
     def __init__(self,numerator,denominator,reduce=True):
@@ -24,9 +26,8 @@ class Rational():
             return  Rational( p * self.down + self.up, self.down )
         elif isinstance(p,  Rational):
             return  Rational( self.up * p.down + p.up * self.down, self.down * p.down )
-        elif isinstance(p,Polynomial):
+        else:
             return p.__add__(self)
-        else: raise TypeError
 
     def __radd__(self,p):
         return self.__add__(p)
@@ -47,9 +48,8 @@ class Rational():
             return Rational( p*self.up, self.down )
         elif isinstance(p,  Rational):
             return Rational( self.up * p.up, self.down * p.down )
-        elif isinstance(p, Polynomial):
+        else:
             return p.__mul__(self)
-        else: raise TypeError
 
     def __rmul__(self,p):
         return self.__mul__(p)
@@ -63,8 +63,7 @@ class Rational():
     def __rtruediv__(self,p):
         if isinstance(p,int): return Rational( p * self.down, self.up )
         elif isinstance(p,float): return p / self.__float__()
-        elif isinstance(p, Polynomial): p.__mul__(1 / self)
-        else: raise TypeError
+        else: p.__mul__(1 / self)
 
     def __pow__(self, n):
         if isinstance(n,int):

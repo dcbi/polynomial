@@ -24,9 +24,7 @@ class Polynomial():
         return len(self._c) - 1
 
     def __add__(self, p):
-        if isinstance(p, (int,float,Rational)):
-            return Polynomial(p+self._c[0], *self._c[1:])
-        elif isinstance(p, Polynomial):
+        if isinstance(p, Polynomial):
             d1 = len(self._c)
             d2 = len(p._c)
             d = min(d1,d2)
@@ -40,7 +38,7 @@ class Polynomial():
                 return Polynomial(*c, *self._c[d:])
             else:
                 return Polynomial(*c)
-        else: return p.__add__(self)
+        else: return Polynomial(p+self._c[0], *self._c[1:])
 
     def __radd__(self,p):
         return self.__add__(p)
@@ -58,9 +56,7 @@ class Polynomial():
         return (-self).__add__(p)
 
     def __mul__(self, p):
-        if isinstance(p, (int,float,Rational)):
-            return Polynomial(*tuple([ p*self._c[i] for i in range(len(self._c)) ]))
-        elif isinstance(p, Polynomial):
+        if isinstance(p, Polynomial):
             c = list()
             for i in range(self.degree() + p.degree() + 1):
                 c.append(0)
@@ -68,7 +64,7 @@ class Polynomial():
                 for j in range(len(p._c)):
                     c[i+j] =  c[i+j] + self._c[i] * p._c[j]
             return Polynomial(*tuple(c))
-        else: p.__mul__(self)
+        else: return Polynomial(*tuple([ p * self._c[i] for i in range(len(self._c)) ]))
 
     def __rmul__(self,p):
         return self.__mul__(p)
@@ -84,9 +80,8 @@ class Polynomial():
                 return result
 
     def __eq__(self, p):
-        if isinstance(p,(int,float,Rational)): return (self._c[0] == p) and (self.degree() == 0)
-        elif isinstance(p,Polynomial): return self._c == p._c
-        else: return False
+        if isinstance(p,Polynomial): return self._c == p._c
+        else: return (self._c[0] == p) and (self.degree() == 0)
 
     def __ne__(self, p):
         return not self == p
